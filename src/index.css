@@ -214,10 +214,6 @@ textarea:focus {
     border-radius: 16px;
   }
 
-  /* .stat-item {
-    margin-bottom: 20px;
-  } */
-
   .stat-item h2 {
     font-size: 30px;
   }
@@ -245,7 +241,6 @@ textarea:focus {
 @media screen and (max-width: 480px) {
   .statistics-section {
     padding: 25px 15px 0px 15px;
-    /* margin: 40px 10px 40px 10px; */
     margin-bottom: 30px;
   }
 
@@ -368,7 +363,7 @@ textarea:focus {
 .offerings-content {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Allow items to wrap */
+  flex-wrap: wrap;
 }
 
 .offerings-section h3 {
@@ -395,18 +390,15 @@ textarea:focus {
   .offerings-content {
     flex-direction: column;
     gap: 20px;
-    /* Add space between elements */
     align-content: center;
   }
 
   .offerings-section img {
     width: 90%;
-    /* Adjust image width */
   }
 
   .offerings-section h3 {
     font-size: 30px;
-    /* Adjust font size */
   }
 }
 
@@ -419,14 +411,11 @@ textarea:focus {
 
   .offerings-section img {
     width: 90%;
-    /* Further adjust image width */
     margin: 20px auto;
-    /* Center image with auto margin */
   }
 
   .offerings-section h3 {
     font-size: 28px;
-    /* Adjust heading font size */
   }
 }
 
@@ -434,19 +423,14 @@ textarea:focus {
 @media (max-width: 480px) {
   .offerings-section {
     padding: 20px 10px;
-    /* Reduce padding */
   }
 
   .offerings-section img {
     width: 100%;
-    /* Make images fully responsive */
-    /* margin: 10px 0; */
-    /* Adjust margin for small screens */
   }
 
   .offerings-section h3 {
     font-size: 16px;
-    /* Further reduce heading font size */
     padding: 8px 16px;
     border-radius: 10px;
   }
@@ -536,34 +520,27 @@ textarea:focus {
 @media (max-width: 912px) {
   .benefit-card {
     width: 50%;
-    /* Adjust width of benefit cards */
     padding: 40px;
-    /* Reduce padding */
   }
 
   .benfits-section h3 {
     font-size: 30px;
-    /* Smaller font for headings */
   }
 
   .benfits-section h4 {
     font-size: 38px;
-    /* Smaller font for subheadings */
   }
 
   .benfits-section h5 {
     font-size: 26px;
-    /* Adjust h5 font size */
   }
 
   .benfits-section p {
     font-size: 14px;
-    /* Smaller text for paragraphs */
   }
 
   .benfits-section img {
     width: 90%;
-    /* Make image width more responsive */
   }
 }
 
@@ -571,34 +548,27 @@ textarea:focus {
 @media (max-width: 768px) {
   .benefit-card {
     width: 50%;
-    /* Further adjust width for smaller screens */
     padding: 30px;
-    /* Adjust padding */
   }
 
   .benfits-section h3 {
     font-size: 28px;
-    /* Further reduce font size */
   }
 
   .benfits-section h4 {
     font-size: 32px;
-    /* Smaller subheading font */
   }
 
   .benfits-section h5 {
     font-size: 24px;
-    /* Smaller h5 font size */
   }
 
   .benfits-section p {
     font-size: 14px;
-    /* Ensure paragraph text remains readable */
   }
 
   .benfits-section img {
     width: 100%;
-    /* Make image full width */
   }
 }
 
@@ -606,39 +576,31 @@ textarea:focus {
 @media (max-width: 480px) {
   .benefit-card {
     width: 50%;
-    /* Make benefit cards more compact */
     padding: 20px;
-    /* Reduce padding further */
   }
 
   .benfits-section h3 {
     font-size: 16px;
-    /* Further reduce heading font size */
     padding: 8px 16px;
     border-radius: 10px;
   }
 
   .benfits-section h4 {
     font-size: 28px;
-    /* Smaller subheading font */
   }
 
   .benfits-section h5 {
     font-size: 19px;
-    /* Further reduce h5 size */
   }
 
   .benfits-section p {
     font-size: 12px;
-    /* Reduce paragraph font size */
     line-height: 1.5;
   }
 
   .benfits-section img {
     width: 100%;
-    /* Ensure image takes full width on mobile */
     margin-bottom: 20px;
-    /* Add margin for spacing */
   }
 }
 

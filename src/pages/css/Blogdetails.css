@@ -1,0 +1,173 @@
+/* Default CSS */
+.blog-date {
+  color: #8e92bc;
+  font-size: 16px;
+  text-align: left;
+}
+
+.blog-title {
+  font-size: 40px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.blog-image {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.blog-content {
+  font-size: 18px;
+  margin: 30px 100px;
+  text-align: left;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-gap {
+  gap: 20px;
+  display: flex;
+  margin-right: 100px;
+}
+
+/* Button Styling */
+.Join-us-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Contact-us-btn {
+  color: #ff7676;
+  border: 2px solid #ff7676;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Contact-us-btn:hover {
+  background-color: #ff5a5a;
+  color: white;
+}
+
+.Contact-us-btn:active {
+  background-color: #ff3b3b;
+}
+
+.Join-us-btn {
+  color: white;
+  border: 2px solid #ff7676;
+  background-color: #ff7676;
+}
+
+.Join-us-btn:hover {
+  background-color: white;
+  color: #ff7676;
+}
+
+.Join-us-btn:active {
+  background-color: #ff7676;
+}
+
+/* Responsive Styling */
+
+/* For screen widths of 1024px */
+@media (max-width: 1024px) {
+  .blog-title {
+    font-size: 36px;
+  }
+
+  .blog-content {
+    margin: 20px 50px;
+    font-size: 16px;
+  }
+
+  .buttons-gap {
+    margin-right: 50px;
+    gap: 15px;
+  }
+}
+
+/* For screen widths of 768px */
+@media (max-width: 768px) {
+  .blog-title {
+    font-size: 32px;
+  }
+
+  .blog-content {
+    margin: 20px 30px;
+    font-size: 15px;
+  }
+
+  .buttons-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons-gap {
+    margin-right: 0;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .Join-us-btn, .Contact-us-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+/* For screen widths of 480px */
+@media (max-width: 480px) {
+  .blog-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .blog-date {
+    text-align: center;
+  }
+
+  .blog-content {
+    margin: 15px 20px;
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  .blog-image {
+    max-width: 100%;
+    margin: 15px 0;
+  }
+
+  .buttons-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons-gap {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .Join-us-btn, .Contact-us-btn {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+}

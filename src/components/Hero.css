@@ -1,0 +1,109 @@
+.hero {
+  margin: 40px auto;
+  padding: 20px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.text-content h1 {
+  margin-bottom: 20px;
+  font-size: 60px;
+  line-height: 1.2;
+  color: #191A23;
+  font-weight: 700;
+}
+
+.text-content .text-highlight {
+  color: #ff7676; /* Highlight color */
+}
+
+.text-content {
+  width: 50%;
+}
+
+.text-content p {
+  font-size: 20px;
+  color: #191A23;
+  font-weight: 400;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.image-content {
+  width: 40%;
+}
+
+/* Responsive Design */
+
+/* For screens 912px and below */
+@media (max-width: 912px) {
+  .hero {
+    flex-direction: column;
+    padding: 20px 40px;
+    text-align: center;
+  }
+
+  .text-content {
+    width: 100%;
+  }
+
+  .text-content h1 {
+    font-size: 48px;
+  }
+
+  .text-content p {
+    font-size: 18px;
+  }
+
+  .image-content {
+    width: 80%;
+    margin-top: 20px;
+  }
+}
+
+/* For screens 768px and below */
+@media (max-width: 768px) {
+  .hero {
+    gap: 20px;
+  }
+
+  .text-content h1 {
+    font-size: 40px;
+  }
+
+  .text-content p {
+    font-size: 16px;
+  }
+
+  .image-content {
+    width: 100%;
+  }
+}
+
+/* For mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 20px;
+  }
+
+  .text-content h1 {
+    font-size: 37px;
+    text-align: left;
+  }
+
+  .text-content p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .image-content {
+    margin-top: 20px;
+  }
+}

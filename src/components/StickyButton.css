@@ -1,0 +1,65 @@
+/* Sticky WhatsApp Button */
+.contact-us {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #40c351;
+    color: white;
+    border-radius: 30px;
+    padding: 12px 15px 12px 60px; /* Extra padding to accommodate the icon */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1000;
+  }
+  
+  .icon-container {
+    position: absolute;
+    left: -16px;
+    top: 20%;
+    transform: translateY(-36%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-us img {
+    width: 70%;
+    height: 70%;
+  }
+  
+  .contact-text {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-text {
+      display: none;
+    }
+  
+    .contact-us {
+      padding: 10px;
+      padding-left: 10px; /* Adjust padding for the icon in mobile view */
+      border-radius: 50%;
+      animation: bounce 1s infinite;
+    }
+  
+    .contact-us img {
+      width: 110%;
+      height: 110%;
+      margin-right: 16px;
+    }
+  
+    .icon-container {
+      width: 40px;
+      height: 40px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  

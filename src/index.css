@@ -570,7 +570,7 @@ textarea:focus {
 /* Responsive Design for Tablets and Smaller Screens */
 @media (max-width: 768px) {
   .benefit-card {
-    width: 80%;
+    width: 50%;
     /* Further adjust width for smaller screens */
     padding: 30px;
     /* Adjust padding */
@@ -1124,7 +1124,7 @@ textarea {
   margin-bottom: 40px;
   color: #fff;
   font-weight: 700;
-  width: 65%;
+  width: 64%;
 }
 
 .controls {
@@ -1192,108 +1192,6 @@ textarea {
   width: 30%;
 }
 
-/* Base styles */
-.success-stories {
-  text-align: center;
-  padding: 40px 0px 80px 0px;
-}
-
-.success-stories h2 {
-  background-color: #FF7676;
-  color: black;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  margin-bottom: 50px;
-  font-size: 35px;
-}
-
-.testimonial-box {
-  display: flex;
-  justify-content: space-between;
-  background-color: #1e1e1e;
-  padding: 40px 40px;
-  border-radius: 35px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.left-section {
-  text-align: left;
-}
-
-.left-section h3 {
-  font-size: 40px;
-  margin-bottom: 40px;
-  color: #fff;
-  font-weight: 700;
-  width: 65%;
-}
-
-.controls {
-  display: flex;
-  gap: 10px;
-  justify-content: left;
-}
-
-.controls button {
-  background-color: #444;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.controls button:hover {
-  background-color: #ff7676;
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(255, 118, 118, 0.6);
-}
-
-.testimonials-wrapper {
-  overflow: hidden;
-  flex: 1;
-  position: relative;
-  margin-left: 20px;
-}
-
-.testimonial-card {
-  width: 260px;
-  height: 280px;
-  background-color: #2f3032;
-  border-radius: 16px;
-  padding: 20px;
-  border-width: 2px;
-  border-style: solid;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.testimonial-card p {
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: left;
-}
-
-.testimonial-card span {
-  display: block;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #8e92bc;
-  text-align: right;
-  font-weight: 600;
-  margin-top: 30px;
-}
-
-.leftsec {
-  width: 30%;
-}
 
 /* Mobile and Tablet Responsive */
 @media (max-width: 1024px) {

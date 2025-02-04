@@ -84,6 +84,10 @@
   background-color: #ff7676;
 }
 
+.buttons{
+  display: flex;
+  gap: 20px;
+}
 /* Responsive Styling */
 
 /* For screen widths of 1024px */
@@ -135,12 +139,12 @@
 /* For screen widths of 480px */
 @media (max-width: 480px) {
   .blog-title {
-    font-size: 28px;
-    text-align: center;
+    font-size: 26px;
+    text-align: left;
   }
 
   .blog-date {
-    text-align: center;
+    text-align: left;
   }
 
   .blog-content {
@@ -169,5 +173,6 @@
     width: 100%;
     padding: 8px;
     font-size: 14px;
+    margin-bottom: 20px;
   }
 }

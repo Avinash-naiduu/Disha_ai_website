@@ -18,18 +18,9 @@ const HeroSection = () => {
   };
 
   const slides = [
-    {
-      src: Banner1,
-      alt: 'Banner 1',
-    },
-    {
-      src: Banner2,
-      alt: 'Banner 2',
-    },
-    {
-      src: Banner3,
-      alt: 'Banner 3',
-    },
+    {src: Banner1,alt: 'Banner 1',},
+    {src: Banner2,alt: 'Banner 2',},
+    {src: Banner3,alt: 'Banner 3',},
   ];
 
   return (
@@ -37,11 +28,7 @@ const HeroSection = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="carousel-item">
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              className="d-block w-100"
-            />
+            <img src={slide.src}alt={slide.alt}className="d-block w-100"/>
           </div>
         ))}
       </Slider>

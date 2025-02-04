@@ -38,10 +38,10 @@ function App() {
                         <Route path="/events" element={<Events />} />
                         <Route path="/Contactus" element={<Contactus />} />
                         <Route path="/aboutus" element={<Aboutus />} />
-                        <Route path="/terms" element={<Terms />} />
-                        <Route path="/refunds" element={<Refunds />} />
-                        <Route path="/Privacy" element={<Privacy />} />
-                        <Route path="/Products" element={<Products />} />
+                        <Route path="/terms&conditions" element={<Terms />} />
+                        <Route path="/refunds&cancellation" element={<Refunds />} />
+                        <Route path="/privacy policy" element={<Privacy />} />
+                        <Route path="/products&services" element={<Products />} />
                         <Route path="/Blogdetails" element={<Blogdetails />} />
                     </Routes>
                 </Suspense>

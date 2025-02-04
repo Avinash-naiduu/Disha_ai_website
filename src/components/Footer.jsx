@@ -76,10 +76,10 @@ const Footer = () => {
           <h3 className="footer__heading">Useful Links</h3>
           <ul className="footer__list">
           <li><Link to="/aboutus" className="footer__link">About Us</Link></li>
-          <li><Link to="/terms" className="footer__link">Terms & Conditions</Link></li>
-          <li><Link to="/refunds" className="footer__link"> Refund & Cancellation</Link></li>
-          <li><Link to="/Privacy" className="footer__link">Privacy Policy</Link></li>
-          <li><Link to="/Products" className="footer__link">Product & Services</Link></li>
+          <li><Link to="/terms&conditions" className="footer__link">Terms & Conditions</Link></li>
+          <li><Link to="/refunds&cancellation" className="footer__link"> Refund & Cancellation</Link></li>
+          <li><Link to="/privacy policy" className="footer__link">Privacy Policy</Link></li>
+          <li><Link to="/products&services" className="footer__link">Product & Services</Link></li>
           </ul>
         </div>
       </div>

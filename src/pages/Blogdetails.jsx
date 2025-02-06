@@ -20,7 +20,7 @@ const Blog = () => {
     <main className="py-5 mt-5">
       <div className="container text-center">
         <h1 className="blog-title">{blogData.title}</h1>
-        <div className="align-items-center">
+        <div className="liness">
           <p className="blog-date">{blogData.date}</p>
           <div className="buttons">
             <Link to="/Contactus" className="Contact-us-btn"> Contact us </Link>

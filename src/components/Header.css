@@ -19,7 +19,7 @@
 
 /* Hamburger Menu */
 .hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   height: 24px;

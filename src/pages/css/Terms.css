@@ -1,36 +1,103 @@
 .terms-container {
-    color: #333; /* Dark text for readability */
-    line-height: 1.8;
-  }
-  
+  color: #333; /* Dark text for readability */
+  line-height: 1.8;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.terms-title {
+  font-size: 2.5rem; /* Large heading */
+  font-weight: 700;
+  color: #000; /* Black for strong emphasis */
+  margin-bottom: 1rem;
+}
+
+.terms-paragraph {
+  font-size: 1rem; /* Standard body text size */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+
+.texprimary {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FF7676;
+}
+
+.my-5 {
+  margin-top: 6.5rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.headingg {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
   .terms-title {
-    font-size: 2.5rem; /* Large heading */
-    font-weight: 700;
-    color: #000; /* Black for strong emphasis */
-    margin-bottom: 1rem;
+    font-size: 2rem;
   }
-  
+
   .terms-paragraph {
-    font-size: 1rem; /* Standard body text size */
-    margin-bottom: 1.5rem; /* Add spacing between paragraphs */
-    
+    font-size: 0.95rem;
   }
-  
-  .texprimary {
+
+  .headingg {
+    font-size: 18px;
+  }
+
+  .my-5 {
+    margin-top: 4rem !important;
+    margin-bottom: 2rem !important;
+  }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .terms-container {
+    padding: 15px;
+  }
+
+  .terms-title {
+    font-size: 1.8rem;
+  }
+
+  .terms-paragraph {
     font-size: 0.875rem;
-    font-weight: 600;
-    color: #FF7676;
-  }
-  
-  .my-5{
-    margin-top: 6.5rem !important;
-    margin-bottom: 3rem !important;
   }
 
-  .headingg{
-    font-size: 20px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 1rem;
+  .headingg {
+    font-size: 16px;
   }
 
+  .my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .terms-title {
+    font-size: 1.5rem;
+  }
+
+  .terms-paragraph {
+    font-size: 0.8rem;
+  }
+
+  .headingg {
+    font-size: 14px;
+  }
+
+  .my-5 {
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+}

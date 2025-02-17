@@ -42,7 +42,7 @@ function App() {
                         <Route path="/refunds&cancellation" element={<Refunds />} />
                         <Route path="/privacy policy" element={<Privacy />} />
                         <Route path="/products&services" element={<Products />} />
-                        <Route path="/Blogdetails" element={<Blogdetails />} />
+                        <Route path="/Blogdetails/:id" element={<Blogdetails />} />
                     </Routes>
                 </Suspense>
             </main>

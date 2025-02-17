@@ -69,6 +69,16 @@
   background-color: #ff3b3b;
 }
 
+
+.blog-meta{
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-image-container{
+  text-align: center;
+}
+
 .Join-us-btn {
   color: white;
   border: 2px solid #ff7676;

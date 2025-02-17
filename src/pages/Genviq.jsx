@@ -1,137 +1,12 @@
-import React, { useState } from 'react';
-import './css/Genviq.css';
-import Programming from "../assets/image 1.png";
-import Why from "../assets/image 2.png";
-import { Link } from 'react-router-dom';
-
-// Example categories data
-const categories = [
-  {
-    name: 'Genviq 1',
-    items: [
-      {
-        id: 1,
-        image: Programming,
-        title: 'Programming-Intuitively, Methodically, Enjoyably',
-        date: '10, Nov 2024',
-        description: 'To develop coding skills in an easy, accessible, and affordable way to every child.',
-      },
-      {
-        id: 2,
-        image: Why,
-        title: 'Why Learn Programming Early?',
-        date: '12, Dec 2024',
-        description: 'Discover the benefits of introducing programming at a young age.',
-      },
-      {
-        id: 3,
-        image: Why,
-        title: 'Why Learn Programming Early?',
-        date: '12, Dec 2024',
-        description: 'Discover the benefits of introducing programming at a young age.',
-      },
-      {
-        id: 4,
-        image: Why,
-        title: 'Why Learn Programming Early?',
-        date: '12, Dec 2024',
-        description: 'Discover the benefits of introducing programming at a young age.',
-      },
-      {
-        id: 5,
-        image: Why,
-        title: 'Why Learn Programming Early?',
-        date: '12, Dec 2024',
-        description: 'Discover the benefits of introducing programming at a young age.',
-      },
-    ],
-  },
-  {
-    name: 'Genviq 2',
-    items: [
-      {
-        id: 6,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 7,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 8,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-    ],
-  },
-
-  {
-    name: 'Genviq 3',
-    items: [
-      {
-        id: 9,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 10,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 11,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-    ],
-  },
-
-  {
-    name: 'Genviq 4',
-    items: [
-      {
-        id: 12,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 13,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-      {
-        id: 14,
-        image: Programming,
-        title: 'Creative Thinking for Kids',
-        date: '15, Jan 2025',
-        description: 'How to boost creativity with fun learning activities.',
-      },
-    ],
-  },
-];
+import React, { useState, useEffect } from "react";
+import "./css/Events.css";
+import { useNavigate } from "react-router-dom";
+import Image from "../assets/DishaAI_Logo.png"
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const media = window.matchMedia(query);
     if (media.matches !== matches) {
       setMatches(media.matches);
@@ -144,76 +19,152 @@ const useMediaQuery = (query) => {
   return matches;
 };
 
-const Genviq = () => {
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+const Events = () => {
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [activeTab, setActiveTab] = useState(0);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const navigate = useNavigate();
 
-  const isMobile = useMediaQuery('(max-width: 768px)'); // Check if the screen width is <= 768px
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("https://disha-server.onrender.com/api/genviq");
+      const data = await response.json();
+      console.log("Categories API Response:", data);
+
+      if (!Array.isArray(data)) {
+        throw new Error("Invalid API response format");
+      }
+      setCategories(data);
+
+      if (data.length > 0) {
+        setActiveCategory(data[0]);
+        fetchEvents(data[0]._id);
+      }
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+      setError("Failed to load categories");
+    }
+  };
+
+  const fetchEvents = async (categoryId) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://disha-server.onrender.com/api/content?categoryId=${categoryId}`);
+      const data = await response.json();
+      console.log("Events API Response:", data);
+
+      if (!data || !Array.isArray(data.data)) {
+        throw new Error("Invalid API response format");
+      }
+
+      const filteredEvents = data.data.filter((event) => event.category?._id === categoryId);
+      console.log(`Filtered Events for Category ID ${categoryId}:`, filteredEvents);
+
+      setEvents([...filteredEvents]);
+    } catch (err) {
+      console.error("Error fetching events:", err);
+      setError("Failed to load events");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleCategoryClick = (index) => {
-    setActiveCategory(categories[index]);
+    const selectedCategory = categories[index];
+    setActiveCategory(selectedCategory);
     setActiveTab(index);
+    fetchEvents(selectedCategory._id);
+  };
+
+  const handleReadMore = (event) => {
+    console.log(event)
+    navigate(`/blogdetails/${event}`);
   };
 
   return (
     <main className="main-content">
       {isMobile ? (
-        /* Mobile Tabs */
         <div className="tabs-container">
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`tab-button ${activeTab === index ? 'active' : ''}`}
-              onClick={() => handleCategoryClick(index)}
-            >
-              {category.name}
-            </button>
-          ))}
+          {categories.length > 0 ? (
+            categories.map((category, index) => (
+              <button
+                key={index}
+                className={`tab-button ${activeTab === index ? "active" : ""}`}
+                onClick={() => handleCategoryClick(index)}
+              >
+                {category.name}
+              </button>
+            ))
+          ) : (
+            <p>No categories found</p>
+          )}
         </div>
       ) : (
-        /* Sidebar for Larger Screens */
         <aside className="sidebar">
           <h2 className="sidebar-title">Genviq</h2>
           <ul className="sidebar-list">
-            {categories.map((category, index) => (
-              <li
-                key={index}
-                className={activeCategory.name === category.name ? 'active' : ''}
-                onClick={() => handleCategoryClick(index)} >
-                <a href="#!" onClick={(e) => e.preventDefault()}>
-                  {category.name}
-                </a>
-              </li>
-            ))}
+            {categories.length > 0 ? (
+              categories.map((category, index) => (
+                <li
+                  key={index}
+                  className={activeCategory?._id === category._id ? "active" : ""}
+                  onClick={() => handleCategoryClick(index)}
+                >
+                  <a href="#!" onClick={(e) => e.preventDefault()}>
+                    {category.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <p>No categories found</p>
+            )}
           </ul>
         </aside>
       )}
 
-      {/* Main Section */}
       <div className="section">
-        {activeCategory.items.length > 0 ? (
-          activeCategory.items.map((item) => (
-            <div className="card" key={item.id}>
-              <div className="card-image">
-                <img src={item.image} alt={item.title} />
+        {loading ? (
+          <p className="loading">Loading events...</p>
+        ) : error ? (
+          <p className="error">{error}</p>
+        ) : events.length > 0 ? (
+          events.map((item) => (
+            <div className="cardd" key={item._id}>
+              <div className="cardd-image">
+                <img src={item.imageurl || (Image)} alt={item.title} />
               </div>
-              <div className="card-content">
-                <div className='sec'>
-                <span className="tag">{activeCategory.name}</span>
-                <span className="date">{item.date}</span>
-                </div>
+              <div className="cardd-content">
+                <div className="sec">
+                  <span className="tag">{activeCategory?.name}</span>
+                  <span className="date">
+                    {new Date(item.createdAt).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </span>                </div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <Link to="/Blogdetails" className="read-more-btn"> Read more <span>➤</span> </Link>
+                <button className="read-more-btn" onClick={() => handleReadMore(item._id)}>
+                  Read more <span>➤</span>
+                </button>
               </div>
             </div>
           ))
         ) : (
-          <p className="no-items">No items available in this category.</p>
+          <p className="no-items">No events available for this category.</p>
         )}
       </div>
     </main>
   );
 };
 
-export default Genviq;
+export default Events;

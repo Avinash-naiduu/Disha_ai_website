@@ -6,30 +6,6 @@
   margin-top: 80px;
 }
 
-@media (max-width: 1024px) {
-  .main-content {
-    flex-direction: column;
-    padding: 30px;
-    gap: 15px;
-    margin-top: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-content {
-    padding: 20px;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-content {
-    flex-direction: column;
-    padding: 0px;
-    margin: 40px 0px;
-  }
-}
-
 /* Sidebar */
 .sidebar {
   background-color: #ffffff;
@@ -70,62 +46,26 @@
   color: #ff7676;
 }
 
-@media (max-width: 1024px) {
-  .sidebar {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .sidebar-title {
-    font-size: 24px;
-  }
-
-  .sidebar-list li a {
-    font-size: 18px;
-    list-style: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    padding: 15px;
-  }
-
-  .sidebar-title {
-    font-size: 20px;
-  }
-
-  .sidebar-list li a {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .sidebar {
-    display: none; /* Hide sidebar on mobile */
-  }
-}
-
-/* Mobile Tabs - Scrollable without Black Line */
+/* Mobile Tabs */
 .tabs-container {
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto;
   width: 100%;
-  height: 50px; /* Fixed height */
+  height: 50px;
   margin-bottom: 20px;
   padding: 5px 0;
   background-color: #fff;
-  border: none; /* Remove any border causing the line */
-  box-shadow: none; /* Remove shadow if applicable */
-  scrollbar-width: none; /* For Firefox, hide scrollbar */
+  border: none;
+  box-shadow: none;
+  scrollbar-width: none;
 }
 
 .tabs-container::-webkit-scrollbar {
-  display: none; /* For Chrome/Safari, hide scrollbar */
+  display: none;
 }
 
 .tab-button {
-  flex-shrink: 0; /* Prevent the tab buttons from shrinking */
+  flex-shrink: 0;
   background: #fff;
   color: #2f3032;
   padding: 10px 16px;
@@ -134,9 +74,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-right: 10px;
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap;
   position: relative;
-  border: none; /* Remove button borders */
+  border: none;
 }
 
 .tab-button:hover {
@@ -157,27 +97,9 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #ff7676; /* Underline color */
+  background-color: #ff7676;
   border-radius: 10px;
-  color: w;
 }
-
-/* Mobile View (480px and Below) */
-@media (max-width: 480px) {
-  .tabs-container {
-    height: 50px;
-    overflow-x: scroll; /* Scrollable on small screens */
-    padding: 0 10px;
-    margin: 30px 0;
-  }
-
-  .tab-button {
-    font-size: 16px;
-    padding: 8px 12px;
-    margin-right: 5px;
-  }
-}
-
 
 /* Section */
 .section {
@@ -188,27 +110,8 @@
   width: 75%;
 }
 
-@media (max-width: 1024px) {
-  .section {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    gap: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    gap: 10px;
-  }
-}
-
-/* Card */
-.card {
+/* cardd */
+/* .cardd {
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -217,51 +120,50 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   position: relative;
 }
 
-@media (max-width: 1024px) {
-  .card {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 15px);
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: 100%;
-  }
-}
-
-/* Card Image */
-.card-image img {
+.cardd-image img {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
-}
+} */
 
-@media (max-width: 480px) {
-  .card-image img {
-    height: auto;
-  }
-}
-
-/* Card Content */
-.card-content {
-  padding: 16px;
-  position: relative;
+.cardd {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;  /* Fixed width */
+  height: auto;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Allows the content to stretch */
-  justify-content: space-between; /* Pushes the button to the bottom */
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Card Image */
+.cardd-image {
+  width: 100%;
+  height: 220px;  /* Fixed height to maintain consistency */
+  overflow: hidden;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cardd-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Ensures images are correctly sized */
+  display: block;
+}
+
+
+/* cardd Content */
+.cardd-content {
+  padding: 16px;
+  position: relative;
 }
 
 .tag {
@@ -282,19 +184,18 @@
   color: #8e92bc;
 }
 
-.card-content h3 {
+.cardd-content h3 {
   font-size: 1.2rem;
   font-weight: 700;
   color: #2f3032;
   margin: 0.5rem 0;
   display: -webkit-box;
-   -webkit-line-clamp: 2;
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
-
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.card-content p {
+.cardd-content p {
   font-size: 0.95rem;
   line-height: 1.5;
   color: #8e92bc;
@@ -303,47 +204,140 @@
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   display: -webkit-box;
-   -webkit-line-clamp: 2;
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .read-more-btn {
-  color: #ff7676;
+  color: white;
   text-decoration: none;
+  border: 2px solid #ff7676;
   font-size: 16px;
   font-weight: 600;
-  border: 2px solid #ff7676;
   padding: 8px 16px;
   border-radius: 12px;
   transition: all 0.3s ease-in-out;
-  align-self: flex-start; /* Align the button to the left */
-  margin-top: auto; /* Pushes it to the bottom of the card content */
+  align-self: flex-start;
+  margin-top: auto;
+  background-color: #ff7676;
 }
 
 .read-more-btn:hover {
-  background-color: #ff7676;
-  color: #fff;
+  background-color: white;
+  border: 2px solid #ff7676;
+  color: #ff7676;
 }
 
-.sec{
+.sec {
   display: inline;
 }
 
-@media (max-width: 480px) {
-  .read-more-btn {
-    color: #ff7676;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    border: 2px solid #ff7676;
-    padding: 8px 16px;
-    border-radius: 12px;
-    transition: all 0.3s ease-in-out;
+
+@media (max-width: 1024px) {
+  .main-content {
+      flex-direction: column;
+      padding: 30px;
+      gap: 15px;
+      margin-top: 60px;
   }
-  
+
+  .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .sidebar-title {
+      font-size: 24px;
+  }
+
+  .sidebar-list li a {
+      font-size: 18px;
+  }
+
+  .section {
+      width: 100%;
+      justify-content: center;
+  }
+
+  .cardd {
+      width: 100%;
+      height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+      padding: 20px;
+      gap: 10px;
+  }
+
+  .sidebar {
+      padding: 15px;
+  }
+
+  .sidebar-title {
+      font-size: 20px;
+  }
+
+  .sidebar-list li a {
+      font-size: 16px;
+  }
+
+  .section {
+      gap: 15px;
+  }
+
+  .cardd {
+      width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+      flex-direction: column;
+      padding: 0px;
+      margin: 40px 0px;
+  }
+
+  .sidebar {
+      display: none;
+  }
+
+  .tabs-container {
+      height: 50px;
+      overflow-x: scroll;
+      padding: 0 10px;
+      margin: 30px 0;
+  }
+
+  .tab-button {
+      font-size: 16px;
+      padding: 8px 12px;
+      margin-right: 5px;
+  }
+
+  .section {
+      gap: 10px;
+  }
+
+  .cardd {
+      width: 100%;
+  }
+
+  .read-more-btn {
+      color: #ff7676;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border: 2px solid #ff7676;
+      padding: 8px 16px;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+  }
+
   .read-more-btn:hover {
-    background-color: #ff7676;
-    color: #fff;
+      background-color: #ff7676;
+      color: #fff;
   }
 }

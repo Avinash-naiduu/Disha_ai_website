@@ -1,39 +1,77 @@
-// Blog.js
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./css/Blogdetails.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import blogimage from "../assets/Prime.png";
-import { Link } from "react-router-dom";
+import Image from "../assets/DishaAI_Logo.png"
 
 const Blog = () => {
-  const blogData = {
-    title: "Programming-Intuitively, Methodically, Enjoyably",
-    date: "Blogs • 16 March 2023",
-    imageSrc: blogimage,
-    content: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    ],
+  const { id } = useParams();
+  console.log("events", id)
+  const [eventData, setEventData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchEventDetails();
+  }, [id]);
+
+  const fetchEventDetails = async () => {
+    try {
+      const response = await fetch(`https://disha-server.onrender.com/api/content/${id}`);
+      const result = await response.json();
+
+      console.log("Fetched Blog Data:", result);
+
+      if (!result || !result.data) {
+        throw new Error("Invalid API response");
+      }
+
+      setEventData(result.data);
+    } catch (err) {
+      console.error("Error fetching event details:", err);
+      setError("Failed to load event details");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  if (loading) return <p className="loading">Loading event details...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
     <main className="py-5 mt-5">
-      <div className="container text-center">
-        <h1 className="blog-title">{blogData.title}</h1>
-        <div className="liness">
-          <p className="blog-date">{blogData.date}</p>
+      <div className="container">
+        {/* Blog Title */}
+        <h1 className="blog-title">{eventData?.title || "No Title Available"}</h1>
+
+        {/* Blog Date + Category Name */}
+        <div className="blog-meta">
+          <p className="blog-date">
+            {eventData?.createdAt
+              ? new Date(eventData.createdAt).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })
+              : "Unknown"}
+          </p>
+          <span className="blog-category">{eventData?.category.name}</span>
+
+
+          {/* Buttons */}
           <div className="buttons">
-            <Link to="/Contactus" className="Contact-us-btn"> Contact us </Link>
-            <Link to="/Contactus" className="Join-us-btn"> Join us </Link>
+            <button className="contact-us-btn">Contact us</button>
+            <button className="join-us-btn">Join us</button>
           </div>
         </div>
-        <img src={blogData.imageSrc} alt="Blog Visual" className="blog-image mx-auto" />
+
+        {/* Blog Image */}
+        <div className="blog-image-container">
+          <img src={eventData?.imageurl || (Image)} alt="Blog Visual" className="blog-image" />
+        </div>
+
+        {/* Blog Description */}
         <div className="mt-4">
-          {blogData.content.map((paragraph, index) => (
-            <p key={index} className="blog-content">
-              {paragraph}
-            </p>
-          ))}
+          <p className="blog-content">{eventData?.description || "No description available."}</p>
         </div>
       </div>
     </main>

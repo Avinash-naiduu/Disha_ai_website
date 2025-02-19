@@ -1,114 +1,96 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import '../../src/index.css';
+import axios from "axios";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../../src/index.css";
 
 const TestimonialCard = ({ text, author, borderColor }) => (
-    <div
-        className="testimonial-card"
-        style={{
-            borderColor: borderColor,
-        }}
-    >
+    <div className="testimonial-card" style={{ 
+        borderLeft: `2px solid ${borderColor}`, 
+        borderTop: `2px solid ${borderColor}`, 
+        borderRight: "none", 
+        borderBottom: "none"
+    }}>
         <p>{text}</p>
         <span>- {author}</span>
     </div>
 );
 
-const TestimonialsSlider = () => {
-    const testimonials = [
-        {
-            text: "I like how in-depth it was. Not just, “What are you interested in?” but how your personality and personal preferences play into a career fit.",
-            author: "Pradyumna",
-            borderColor: "#FF7676",
-        },
-        {
-            text: "I was in cross direction towards my career choices. Thank God DISHAAI guided me the right career which suits my characteristics.",
-            author: "Tanav",
-            borderColor: "#FFD700",
-        },
-        {
-            text: "This is a great tool, extremely accurate. The assessment has given me a great insight to align my parents and teachers in one direction.",
-            author: "Anonymous",
-            borderColor: "#00C6FF",
-        },
-        {
-            text: "I found this platform to be truly insightful. It helped me align my career goals with my strengths and interests.",
-            author: "Neha",
-            borderColor: "#32CD32",
-        },
-    ];
 
-    // State for controlling the slider
+const TestimonialsSlider = () => {
+    const [testimonials, setTestimonials] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [slider, setSlider] = useState(null);
 
-    const [slidesToShow, setSlidesToShow] = useState(2.8); // default value for larger screens
-
-    // Update slidesToShow based on window size
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setSlidesToShow(1); // Show 1 slide on mobile
-            } else {
-                setSlidesToShow(2.8); // Default value for larger screens
+        const fetchTestimonials = async () => {
+            try {
+                const response = await axios.get("https://disha-server.onrender.com/api/testimonials");
+                setTestimonials(response.data);
+                setLoading(false);
+            } catch (error) {
+                setError("Failed to load testimonials");
+                setLoading(false);
             }
         };
-
-        handleResize(); // Initial check on component mount
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
+        fetchTestimonials();
     }, []);
 
-    // Slider settings
     const settings = {
         dots: false,
         infinite: true,
-        speed: 400,
-        slidesToShow: slidesToShow,
+        speed: 800,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 2500,
         arrows: false,
-    };
-
-    // Custom next and previous functions for arrows
-    const handlePrev = () => {
-        if (slider) slider.slickPrev();
-    };
-
-    const handleNext = () => {
-        if (slider) slider.slickNext();
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+        ],
     };
 
     return (
         <section className="success-stories">
-            <h2>DISHAI SUCCESS STORIES</h2>
+            <h2 className="title">What People Say About Us</h2>
             <div className="testimonial-box">
-                <div className="leftsec">
-                    <div className="left-section">
-                        <h3>What People Say About Us</h3>
-                    </div>
-                    {/* Custom Arrows */}
+                <div className="left-section">
+                    <h3>What People Say About Us</h3>
                     <div className="controls">
-                        <button onClick={handlePrev}>{"<"}</button>
-                        <button onClick={handleNext}>{">"}</button>
+                        <button className="prev-btn" onClick={() => slider?.slickPrev()}>&lt;</button>
+                        <button className="next-btn" onClick={() => slider?.slickNext()}>&gt;</button>
                     </div>
                 </div>
                 <div className="testimonials-wrapper">
-                    <Slider
-                        {...settings}
-                        ref={(slider) => setSlider(slider)}  // Reference for slider control
-                    >
-                        {testimonials.map((testimonial, index) => (
-                            <TestimonialCard
-                                key={index}
-                                text={testimonial.text}
-                                author={testimonial.author}
-                                borderColor={testimonial.borderColor}
-                            />
-                        ))}
-                    </Slider>
+                    {loading ? (
+                        <p>Loading testimonials...</p>
+                    ) : error ? (
+                        <p>{error}</p>
+                    ) : (
+                        <Slider {...settings} ref={setSlider}>
+                            {testimonials.map((testimonial, index) => (
+                                <TestimonialCard
+                                    key={index}
+                                    text={testimonial.text}
+                                    author={testimonial.authorname}
+                                    borderColor={testimonial.bordercolor}
+                                />
+                            ))}
+                        </Slider>
+                    )}
                 </div>
             </div>
         </section>

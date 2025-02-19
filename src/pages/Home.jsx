@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroSection from '../components/HeroSection'
+import Banners from '../components/Banners'
 import Hero from '../components/Hero'
 import StatisticsSection from '../components/StatisticsSection'
 import VisionSection from '../components/VisionSection'
@@ -13,7 +13,7 @@ const Home = () => {
     //x
     return (
         <div>
-            <HeroSection />
+            <Banners />
             <Hero />
             <StatisticsSection />
             <VisionSection/>

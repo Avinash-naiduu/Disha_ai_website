@@ -1,7 +1,7 @@
 /* Default Footer Styling */
 .footer {
   background-color: #1e1e1e;
-  padding: 40px 20px;
+  padding: 40px 60px;
   color: #ffffff;
   font-family: 'Space Grotesk', sans-serif;
 }
@@ -15,9 +15,9 @@
 }
 
 .footer__logo-section {
-  flex: 1;
+  flex: 0.7;
   text-align: left;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 
 .footer__logo {
@@ -123,9 +123,9 @@
   gap: 100px;
 }
 
-/* .footer__links-section {
-  margin-right: 50px;
-} */
+.footer__links-section {
+  margin-right: 20px;
+}
 
 /* Responsive Styling */
 @media (max-width: 1024px) {

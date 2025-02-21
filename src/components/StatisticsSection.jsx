@@ -10,7 +10,7 @@ const StatisticsSection = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/stats/");
+        const response = await axios.get("https://disha-server.onrender.com/api/counter");
         setStats(response.data); // Assuming the API returns an array of stats
         setLoading(false);
       } catch (error) {

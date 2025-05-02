@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [offices, setOffices] = useState([]);
+  console.log("---------------", offices[0,1])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchOffices = async () => {
       try {
-        const response = await axios.get("https://disha-server.onrender.com/api/footer/");
+        const response = await axios.get("http://localhost:4000/api/footer/");
         setOffices(response.data.data); // Assuming the API returns an array with office details
         setLoading(false);
       } catch (error) {
@@ -67,12 +68,12 @@ const Footer = () => {
                       <p className="ofc_type">Head Office</p>
                     </div>
                     <div>
-                      <p className="footer__address">{offices[0].address}</p>
+                      <p className="footer__address">{offices[0].headAddress}</p>
                       <p className="footer__contact">
-                        Call Us: <span>{offices[0].contact}</span>
+                        Call Us: <span>{offices[0].headPhoneNumber}</span>
                       </p>
                       <p className="footer__email">
-                        E-Mail: <a href={`mailto:${offices[0].email}`}>{offices[0].email}</a>
+                        E-Mail: <a href={`mailto:${offices[0].email}`}>{offices[0].headEmail}</a>
                       </p>
                     </div>
                   </>
@@ -87,18 +88,18 @@ const Footer = () => {
               ) : error ? (
                 <p>{error}</p>
               ) : (
-                offices[1] && (
+                offices[0] && (
                   <>
                     <div>
                       <p className="ofc_type">Regional Office</p>
                     </div>
                     <div>
-                      <p className="footer__address">{offices[1].address}</p>
+                      <p className="footer__address">{offices[0].regionalAddress}</p>
                       <p className="footer__contact">
-                        Call Us: <span>{offices[1].contact}</span>
+                        Call Us: <span>{offices[0].regionalPhoneNumber}</span>
                       </p>
                       <p className="footer__email">
-                        E-Mail: <a href={`mailto:${offices[1].email}`}>{offices[1].email}</a>
+                        E-Mail: <a href={`mailto:${offices[0].email}`}>{offices[0].regionalEmail}</a>
                       </p>
                     </div>
                   </>

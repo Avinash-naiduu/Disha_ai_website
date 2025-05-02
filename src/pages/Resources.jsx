@@ -35,7 +35,7 @@ const Events = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("https://disha-server.onrender.com/api/resource");
+      const response = await fetch("http://localhost:4000/api/resource");
       const data = await response.json();
       console.log("Categories API Response:", data);
 
@@ -57,7 +57,7 @@ const Events = () => {
   const fetchEvents = async (categoryId) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://disha-server.onrender.com/api/content?categoryId=${categoryId}`);
+      const response = await fetch(`http://localhost:4000/api/content?categoryId=${categoryId}`);
       const data = await response.json();
       console.log("Events API Response:", data);
 
